@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    ports:
+      - "6654:6654"
+    volumes:
+      - ./images:/app/images
+
+  ngrok:
+    image: ngrok/ngrok:latest
+    command: http app:6654 --domain=auesassets.ngrok.dev
+    environment:
+      - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
+    depends_on:
+      - app
