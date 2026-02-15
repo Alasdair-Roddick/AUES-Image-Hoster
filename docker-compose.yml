@@ -3,6 +3,8 @@ services:
     build: .
     ports:
       - "6654:6654"
+    environment:
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
     volumes:
       - ./images:/app/images
 
